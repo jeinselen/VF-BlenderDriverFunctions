@@ -1,10 +1,10 @@
 bl_info = {
-	"name": "VF curveAtFrame",
+	"name": "VF curveAtTime",
 	"author": "John Einselen - Vectorform LLC",
-	"version": (0, 1),
+	"version": (0, 2),
 	"blender": (2, 80, 0),
-	"location": "Channel driver -> curveAtFrame(\"Cube\", 0, frame-5)",
-	"description": "Adds curveAtFrame(objectName, curveIndex, time) driver function",
+	"location": "Channel driver -> curveAtTime(\"Cube\", 0, frame-5)",
+	"description": "Adds curveAtTime(objectName, curveIndex, time) driver function",
 	"warning": "inexperienced developer, use at your own risk",
 	"wiki_url": "",
 	"tracker_url": "",
@@ -15,7 +15,7 @@ bl_info = {
 #	https://blender.stackexchange.com/questions/71305/how-to-make-an-addon-with-custom-driver-function
 
 # Example usage:
-#	curveAtFrame("Cube", 0, frame-5)
+#	curveAtTime("Cube", 0, frame-5)
 #	returns the "Cube" object's first animation curve value 5 frames in the past
 #	note that Blender requires an animation curve to get time-based data, and doesn't reference them by type or name, only index number
 
@@ -31,7 +31,7 @@ def curve_at_time(name, channel, frame):
 @persistent
 def load_handler(dummy):
 	dns = bpy.app.driver_namespace
-	dns["curveAtFrame"] = curve_at_time
+	dns["curveAtTime"] = curve_at_time
 
 def register():
 	load_handler(None)

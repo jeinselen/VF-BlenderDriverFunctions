@@ -4,12 +4,12 @@ Functions for use in Blender channel drivers.
 Installation and usage:
 - Download the .py file
 - Open up Blender preferences
-- Install the add-on
-- Enable
+- Install the addon
+- Enable the addon
 - Add a driver to any channel via keyboard shortcut (usually "D"), context menu (right-click), or directly (typing "#" and then the function)
 
 
-## curveAtFrame
+## curveAtTime
 This driver function is intended to mimic Adobe After Effect's "valueAtTime" expression, returning the value of an animated channel from the specified point in time.
 
 After Effects expression reference:
@@ -20,11 +20,21 @@ This returns the value of the "Cube" layer's X position from 0.167 seconds in th
 
 Blender driver equivalent:
 ```javascript
-curveAtFrame("Cube", 0, frame-5)
+curveAtTime("Cube", 0, frame-5)
 ```
 This returns the value of the "Cube" object's first animation curve from 5 frames in the past, relative to the current frame.
 
 Note that Blender's time sampling doesn't allow references to an object's transform property; it has to be an animation curve, and it can only be referenced by index. The first channel that is keyframed will be assigned index 0, the second channel to be animated will be index 1, and so on.
+
+### curveAtTime examples
+
+![three spheres in a white environment, the left side is animated, the other two are tied to it using the curveAtTime driver function in Blender](images/curveAtTime.gif)
+
+1. The left sphere is named "Sphere" and has an animation curve applied to the Z position channel
+2. The middle sphere has the following driver applied to the Z position channel: `curveAtTime("Sphere", 0, frame-5)`
+  - Note how the time offset is implemented in frames, not fractions of a second like in AE
+3. The right sphere has the following driver applied to the Z position channel: `curveAtTime("Sphere", 0, frame*0.5-5)`
+  - Note how the current frame value is multiplied by 0.5 to slow down time
 
 
 ## wiggle
@@ -44,3 +54,19 @@ wiggle(3, 0.2, 1, 4)
 This automatically animates a channel and vaguely matches AE's 3 "wiggles" per second, a potential distance range of -200mm to 200mm (if used in a transform channel), with 1 octave of noise, and a random seed of 4 (seeds can be any floating point number, including negative numbers).
 
 Note that unlike After Effects, driver functions in Blender don't automatically receive unique identifiers for each channel they are applied to, so a unique seed value must be provided by the user.
+
+### wiggle examples
+
+![two spheres and a cube in a white environment animated using the wiggle driver function in Blender](images/wiggle.gif)
+
+1. The left sphere has the following drivers applied to the Z position and all three scale channels:
+  - Z:  `wiggle(2, 0.125, 3, 4.5) + 0.5`
+  - Scale:  `wiggle(2, 0.25, 3, 4.5) + 1.0`
+2. The middle sphere has the following drivers applied to the X, Y, and Z position channels:
+  - X: `wiggle(1, .45, 1, 0.5)`
+  - Y: `wiggle(2, .35, 1, 1.5)` 
+  - Z: `wiggle(1, .25, 1, 2.5) + 0.75`
+3. The right cube has the following drivers applied to the Z. Y, and Z rotation channels:
+  - X: `round(wiggle(0.3, 7.0, 3, 100)) / 7.0 * pi`
+  - Y: `round(wiggle(0.3, 7.0, 3, 200)) / 7.0 * pi`
+  - Z: `round(wiggle(0.3, 7.0, 3, 200)) / 7.0 * pi`
