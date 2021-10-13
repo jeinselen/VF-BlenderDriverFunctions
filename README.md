@@ -1,12 +1,17 @@
-# VF-BlenderDriverFunctions
+# VF Driver Functions
 Functions for use in Blender channel drivers.
 
-Installation and usage:
-- Download the .py file
-- Open up Blender preferences
-- Install the addon
-- Enable the addon
+
+
+## Installation and usage:
+- Download the desired driver
+	- [VF_curveAtTime.py](https://raw.githubusercontent.com/jeinselenVF/VF-BlenderDriverFunctions/main/VF_curveAtTime.py)
+	- [VF_hsv.py](https://raw.githubusercontent.com/jeinselenVF/VF-BlenderDriverFunctions/main/VF_hsv.py)
+	- [VF_wiggle.py](https://raw.githubusercontent.com/jeinselenVF/VF-BlenderDriverFunctions/main/VF_wiggle.py)
+- Open up Blender Preferences > Add-ons
+- Install and enable the add-on
 - Add a driver to any channel via keyboard shortcut (usually "D"), context menu (right-click), or directly (typing "#" and then the function)
+
 
 
 ## curveAtTime
@@ -36,6 +41,19 @@ Note that Blender's time sampling doesn't allow references to an object's transf
 3. The right sphere has the following driver applied to the Z position channel: `curveAtTime("Sphere", 0, frame*0.5-5)`
   - Note how the current frame value is multiplied by 0.5 to slow down time
 
+
+## hsv
+Converts from HSV value inputs to RGB value outputs. Because drivers are designed for individual channel usage, the specific red (`0`), green (`1`), or blue (`2`) channel output must be selected.
+
+The following example uses the `X`, `Y`, and `Z` positions of a controller null to drive the `hue`, `sat`, and `val` variables within the driver, and the same driver setup is copied across all three `r`, `g`, and `b` input channels in both the material, updating the fourth value (`0`, `1`, or `2`) to match the channel index.
+
+```javascript
+hsv(hue, sat, val, 0)
+```
+
+Download the example project: [hsv.blend](images/hsv.blend.zip)
+
+![screen capture of the Blender interface showing both the controller null and the driver function applied to the red channel of an affected object](images/hsv.png)
 
 ## wiggle
 Designed to mimic Adobe After Effect's "wiggle" expression with similar frequency (colloquially known as wiggles per second) and octave settings.
