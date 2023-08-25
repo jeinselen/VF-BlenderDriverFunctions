@@ -2,12 +2,12 @@ bl_info = {
 	"name": "VF Driver HSV",
 	"author": "John Einselen - Vectorform LLC",
 	"version": (0, 1),
-	"blender": (2, 80, 0),
+	"blender": (2, 83, 0),
 	"location": "Channel driver -> hsv(0.1, 0.5, 1.0, 0)",
 	"description": "Adds hsv(hue, saturation, value, RGB channel output) driver function",
 	"warning": "inexperienced developer, use at your own risk",
-	"wiki_url": "",
-	"tracker_url": "",
+	"doc_url": "https://github.com/jeinselenVF/VF-BlenderDriverFunctions",
+	"tracker_url": "https://github.com/jeinselenVF/VF-BlenderDriverFunctions/issues",
 	"category": "Rigging"}
 
 # Thanks for the help:
@@ -46,3 +46,4 @@ def unregister():
 
 if __name__ == "__main__":
 	register()
+	

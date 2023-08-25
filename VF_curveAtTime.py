@@ -1,13 +1,13 @@
 bl_info = {
-	"name": "VF curveAtTime",
+	"name": "VF Driver curveAtTime",
 	"author": "John Einselen - Vectorform LLC",
 	"version": (0, 2),
-	"blender": (2, 80, 0),
+	"blender": (2, 83, 0),
 	"location": "Channel driver -> curveAtTime(\"Cube\", 0, frame-5)",
 	"description": "Adds curveAtTime(objectName, curveIndex, time) driver function",
 	"warning": "inexperienced developer, use at your own risk",
-	"wiki_url": "",
-	"tracker_url": "",
+	"doc_url": "https://github.com/jeinselenVF/VF-BlenderDriverFunctions",
+	"tracker_url": "https://github.com/jeinselenVF/VF-BlenderDriverFunctions/issues",
 	"category": "Rigging"}
 
 # Thanks for the help:
@@ -42,3 +42,4 @@ def unregister():
 
 if __name__ == "__main__":
 	register()
+	
