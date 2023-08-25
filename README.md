@@ -4,7 +4,7 @@ Functions for use in Blender channel drivers.
 
 
 ## Installation and usage:
-- Download the desired driver
+- Download a single driver (below) or the unified plugin: [VF_driverFunctions.py](https://raw.githubusercontent.com/jeinselenVF/VF-BlenderDriverFunctions/main/VF_driverFunctions.py)
 	- [VF_curveAtTime.py](https://raw.githubusercontent.com/jeinselenVF/VF-BlenderDriverFunctions/main/VF_curveAtTime.py)
 	- [VF_hsv.py](https://raw.githubusercontent.com/jeinselenVF/VF-BlenderDriverFunctions/main/VF_hsv.py)
 	- [VF_wiggle.py](https://raw.githubusercontent.com/jeinselenVF/VF-BlenderDriverFunctions/main/VF_wiggle.py)
