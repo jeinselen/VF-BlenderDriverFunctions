@@ -1,7 +1,7 @@
 # VF Driver Functions
+This add-on was designed for Blender version 2.8-4.1 (though not all previous versions may be fully supported). For Blender 4.2 and onwards, [please see the new Production Kit extension](https://github.com/jeinselen/Blender-ProductionKit).
+
 Functions for use in Blender channel drivers.
-
-
 
 ## Installation and usage:
 - Download a single driver (below) or the unified plugin: [VF_driverFunctions.py](https://raw.githubusercontent.com/jeinselenVF/VF-BlenderDriverFunctions/main/VF_driverFunctions.py)
